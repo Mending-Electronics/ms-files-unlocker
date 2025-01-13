@@ -23,30 +23,28 @@ The **MS Unlocker App** simplifies Excel security management for files ranging f
 2. **Choose an action**: Select whether you want to reset/remove passwords, decode VBA, or analyze for malware.
 3. **Get results**: The app quickly processes your request and provides you with the necessary output.
 
-## License
+To run MS Unlocker App locally, follow these steps:
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to learn about the process for submitting pull requests.
-
-## Contact
-
-For further information, feel free to reach out at [support@example.com](mailto:support@example.com).
+- Install python 3.11 or higher
+- Create a python venv
+- Clone the repository
+- Install necessary packages
 
 
-
-
-
-
-
+```bash
 python -m venv venv
 
 cd venv
 
-git clone "...."
+git clone "https://github.com/Mending-Electronics/ms-files-unlocker.git"
 
 Scripts\activate
 
 pip install -r requirements.txt
+```
+
+
+
+![picture](https://github.com/Mending-Electronics/ms-files-unlocker/blob/main/captures/capture1.png?raw=true "picture")
+
+![picture](https://github.com/Mending-Electronics/ms-files-unlocker/blob/main/captures/capture2.png?raw=true "picture")
