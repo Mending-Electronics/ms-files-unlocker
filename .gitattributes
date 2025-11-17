@@ -1,0 +1,3 @@
+# Réactiver uniquement les fichiers HTML/Vue
+*.html linguist-detectable=true
+*.html linguist-language=Vue
