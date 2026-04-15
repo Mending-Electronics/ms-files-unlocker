@@ -1,6 +1,6 @@
 /*!
  * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2024 The Bootstrap Authors
+ * Copyright 2011-2025 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  */
 
@@ -57,24 +57,6 @@
     }
   }
 
-
-
-  function syncIndicators(theme) {
-      const indicators = {
-          light: document.querySelector('#light-toggle-theme-btn-indicator'),
-          dark: document.querySelector('#dark-toggle-theme-btn-indicator'),
-          auto: document.querySelector('#auto-toggle-theme-btn-indicator')
-      };
-
-      Object.keys(indicators).forEach(key => {
-          indicators[key].classList.toggle("d-none", key !== theme);
-      });
-  }
-
-
-
-
-
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     const storedTheme = getStoredTheme()
     if (storedTheme !== 'light' && storedTheme !== 'dark') {
@@ -92,7 +74,6 @@
           setStoredTheme(theme)
           setTheme(theme)
           showActiveTheme(theme, true)
-          syncIndicators(theme)
         })
       })
   })

@@ -1,0 +1,30 @@
+[data-bs-theme=dark] {
+    color-scheme: dark;
+    --bs-body-color: #dee2e6;
+    --bs-body-color-rgb: 222, 226, 230;
+    --bs-body-bg: #1b2d3db2;
+}
+
+/* Styles pour les liens de navigation avec bordures */
+.hover-border {
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    padding-bottom: 2px;
+}
+
+/* Bordure persistante pour les liens actifs Vue Router */
+.nav-link.hover-border.router-link-active,
+.nav-link.hover-border.router-link-exact-active {
+    border-bottom-color: currentColor;
+    color: var(--bs-success);
+    font-weight: 500;
+}
+
+/* Hover uniquement pour les liens non-actifs */
+.nav-link.hover-border:not(.router-link-active):not(.router-link-exact-active):hover {
+    border-bottom-color: currentColor;
+    color: var(--bs-info);
+}
+
+
+

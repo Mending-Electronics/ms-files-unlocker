@@ -1,0 +1,42 @@
+/* Three.js specific styles */
+.three-container { 
+  height: calc(100vh - 56px); 
+  position: relative; 
+}
+
+.sidebar { 
+  width: 320px; 
+  height: 100%; 
+  background: #f8fafb; 
+  border-right: 1px solid rgba(0,0,0,0.06); 
+  overflow-y: auto; 
+  padding: 1rem;
+}
+
+.canvas-container { 
+  flex: 1; 
+  position: relative; 
+  background: #f6f9fc; 
+}
+
+canvas { 
+  width: 100%; 
+  height: 100%; 
+  display: block; 
+}
+
+.small-input { 
+  width: 100px; 
+}
+
+.webgl-error {
+  position: absolute; 
+  inset: 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  background: rgba(255,255,255,0.95); 
+  z-index: 10; 
+  padding: 1rem; 
+  text-align: center; 
+}

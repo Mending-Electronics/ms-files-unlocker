@@ -1,0 +1,51 @@
+/* QR Code specific styles */
+.qr-container { 
+  display: inline-block; 
+  padding: 20px; 
+  background: white; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+
+.qr-canvas { 
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
+}
+
+.qr-history {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.qr-history-item {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qr-history-item:hover {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+.qr-preset {
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+}
+
+.qr-preset:hover {
+  background-color: #e9ecef;
+}
+
+.qr-preset.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
