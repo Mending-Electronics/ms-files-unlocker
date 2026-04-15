@@ -1,5 +1,16 @@
 from flask import Flask, render_template, send_from_directory
 import os
+import sys
+
+# Get the directory where this script is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Add script directory to Python path
+if script_dir not in sys.path:
+    sys.path.insert(0, script_dir)
+
+# Change to script directory to ensure relative paths work
+os.chdir(script_dir)
 
 # Import blueprints
 from modules.xl_reset import create_blueprint as create_xl_reset_bp
@@ -13,7 +24,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 
 # Setup directories
-base_dir = os.getcwd()
+base_dir = script_dir
 dir_upload, dir_unlocked, dir_temp, zip_temp = setup_directories(base_dir)
 
 # Call cleanup at startup

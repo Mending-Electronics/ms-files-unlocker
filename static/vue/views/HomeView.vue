@@ -5,7 +5,7 @@
       <div class="container mt-4">
         <div class="text-center my-4">
           <h1 class="fs-2">MS Excel Tool <span class="bi bi-wrench-adjustable-circle text-secondary"></span></h1>
-          <img class="mb-3" src="/static/webp/unlock.webp" height="150px" alt="" />
+          <img class="mb-3" src="/static/assets/webp/unlock.webp" height="150px" alt="" />
           <p class="text-center">
             This platform simplifies Excel security management by supporting 2007 to 2016 files. 
             It lets you reset or remove passwords and protections, decode common VBA obfuscations, 

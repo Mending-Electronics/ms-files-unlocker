@@ -1,14 +1,14 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.utils import secure_filename
 import os
-from .utils import analyze_vba
+from .utils import remove_protections
 
-vba_analysis_bp = Blueprint('vba_analysis', __name__)
+xl_remove_bp = Blueprint('xl_remove', __name__)
 
 
-@vba_analysis_bp.route('/api/vba-analysis', methods=['POST'])
-def handle_vba_analysis():
-    """Handle VBA analysis request."""
+@xl_remove_bp.route('/api/xl-remove', methods=['POST'])
+def handle_xl_remove():
+    """Handle Excel protection removal request."""
     if 'file' not in request.files:
         return jsonify({'error': 'No file provided'}), 400
     
@@ -19,16 +19,17 @@ def handle_vba_analysis():
     base_dir = os.getcwd()
     
     filename = secure_filename(file.filename)
-    upload_path = os.path.join(base_dir, 'uploads', filename)
+    upload_path = os.path.join(base_dir, 'upload', filename)
     os.makedirs(os.path.dirname(upload_path), exist_ok=True)
     file.save(upload_path)
     
     try:
-        output = analyze_vba(upload_path, base_dir)
+        output_path = remove_protections(upload_path, base_dir)
+        output_filename = os.path.basename(output_path)
         return jsonify({
             'success': True,
-            'message': 'VBA analysis completed',
-            'data': output
+            'message': 'File processed successfully',
+            'filename': output_filename
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500

@@ -8,8 +8,8 @@ from lxml import etree
 
 def setup_directories(base_dir):
     """Setup necessary directories for file processing."""
-    dir_upload = os.path.join(base_dir, 'uploads')
-    dir_unlocked = os.path.join(base_dir, 'unlocked')
+    dir_upload = os.path.join(base_dir, 'upload')
+    dir_unlocked = os.path.join(base_dir, 'output')
     dir_temp = os.path.join(base_dir, '_temp')
     zip_temp = os.path.join(base_dir, '_temp.zip')
     

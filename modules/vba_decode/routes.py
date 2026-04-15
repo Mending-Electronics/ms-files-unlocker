@@ -19,7 +19,7 @@ def handle_vba_decode():
     base_dir = os.getcwd()
     
     filename = secure_filename(file.filename)
-    upload_path = os.path.join(base_dir, 'uploads', filename)
+    upload_path = os.path.join(base_dir, 'upload', filename)
     os.makedirs(os.path.dirname(upload_path), exist_ok=True)
     file.save(upload_path)
     

@@ -1,14 +1,14 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.utils import secure_filename
 import os
-from .utils import remove_vba_password
+from .utils import reset_passwords
 
-vba_remove_bp = Blueprint('vba_remove', __name__)
+xl_reset_bp = Blueprint('xl_reset', __name__)
 
 
-@vba_remove_bp.route('/api/vba-remove', methods=['POST'])
-def handle_vba_remove():
-    """Handle VBA password removal request."""
+@xl_reset_bp.route('/api/xl-reset', methods=['POST'])
+def handle_xl_reset():
+    """Handle Excel password reset request."""
     if 'file' not in request.files:
         return jsonify({'error': 'No file provided'}), 400
     
@@ -19,18 +19,17 @@ def handle_vba_remove():
     base_dir = os.getcwd()
     
     filename = secure_filename(file.filename)
-    upload_path = os.path.join(base_dir, 'uploads', filename)
+    upload_path = os.path.join(base_dir, 'upload', filename)
     os.makedirs(os.path.dirname(upload_path), exist_ok=True)
     file.save(upload_path)
     
     try:
-        output_path = remove_vba_password(upload_path, base_dir)
+        output_path = reset_passwords(upload_path, base_dir)
         output_filename = os.path.basename(output_path)
         return jsonify({
             'success': True,
-            'message': 'VBA password removed successfully',
-            'filename': output_filename,
-            'note': 'Refer to the ReadMe file to unlock your project after processing'
+            'message': 'File processed successfully',
+            'filename': output_filename
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
