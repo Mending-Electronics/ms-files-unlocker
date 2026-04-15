@@ -2,9 +2,10 @@
 (function () {
   console.log('Initializing MS Files Unlocker Vue app...');
   
-  var app = Vue.createApp({
-    delimiters: ['[[', ']]']
-  });
+  var app = Vue.createApp({});
+
+  // Configure custom delimiters for Vue 3
+  app.config.compilerOptions.delimiters = ['[[', ']]'];
 
   // Register HomeView component
   if (window.HomeView) {
@@ -17,4 +18,4 @@
   console.log('Mounting app...');
   var mountedApp = app.mount('#app');
   console.log('App mounted:', mountedApp);
-})();;
+})();
