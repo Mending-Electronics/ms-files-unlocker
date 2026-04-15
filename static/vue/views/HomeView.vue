@@ -1,190 +1,279 @@
-// HomeView.vue
+// HomeView.vue - MS Files Unlocker
 (function () {
   window.HomeView = {
     template: `
-      <div class="container">
-        <Navbar></Navbar>
-        <section class="py-5 my-5">
+      <div class="container mt-4">
+        <div class="text-center my-4">
+          <h1 class="fs-2">MS Excel Tool <span class="bi bi-wrench-adjustable-circle text-secondary"></span></h1>
+          <img class="mb-3" src="/static/webp/unlock.webp" height="150px" alt="" />
+          <p class="text-center">
+            This platform simplifies Excel security management by supporting 2007 to 2016 files. 
+            It lets you reset or remove passwords and protections, decode common VBA obfuscations, 
+            and analyze for potential malware threats in VBA scripts.
+          </p>
+        </div>
 
-          <div class="d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 120px);">
-            <div class="py-5 text-center">
-              <!-- Hero Section -->
-              <div class="hero-section mb-5">
-                <h1 class="display-4 fw-bold text-body mb-3">
-                  <i class="bi bi-shield-check me-2"></i>
-                  App Vue + PHP Sécurisée
-                </h1>
-                <p class="lead fs-4 text-muted mb-4">
-                  Application web moderne avec architecture Vue.js SPA et backend PHP sécurisé
-                </p>
-                <div class="d-flex justify-content-center gap-3 flex-wrap">
-                  <a class="btn btn-success btn-lg px-4" href="/signup">
-                    <i class="bi bi-person-plus me-2"></i>Créer un compte
-                  </a>
-                  <a class="btn btn-primary btn-lg px-4" href="/login">
-                    <i class="bi bi-box-arrow-in-right me-2"></i>Se connecter
-                  </a>
-                </div>
-              </div>
-
-              <!-- Features Grid -->
-              <div class="features-section mb-5">
-                <h2 class="h3 mb-4 text-secondary">
-                  <i class="bi bi-stars me-2"></i>Fonctionnalités Principales
-                </h2>
-                <div class="row g-4 justify-content-center">
-                  <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm border-0">
-                      <div class="card-body text-center p-4">
-                        <div class="feature-icon mb-3">
-                          <i class="bi bi-shield-lock fs-1 text-success"></i>
-                        </div>
-                        <h5 class="card-title">Sécurité Renforcée</h5>
-                        <p class="card-text text-muted">
-                          Protection CSRF, validation des entrées, hashage des mots de passe et politiques de sécurité modernes
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm border-0">
-                      <div class="card-body text-center p-4">
-                        <div class="feature-icon mb-3">
-                          <i class="bi bi-lightning-charge fs-1 text-warning"></i>
-                        </div>
-                        <h5 class="card-title">Performance</h5>
-                        <p class="card-text text-muted">
-                          Architecture SPA avec Vue.js 3, chargement rapide et expérience utilisateur fluide
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm border-0">
-                      <div class="card-body text-center p-4">
-                        <div class="feature-icon mb-3">
-                          <i class="bi bi-gear fs-1 text-info"></i>
-                        </div>
-                        <h5 class="card-title">Architecture Microservice</h5>
-                        <p class="card-text text-muted">
-                          Structure type microservice minimaliste sans runtime/bundler JavaScript, déploiement simplifié et autonomie des services
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Apps Showcase -->
-              <div class="apps-showcase mb-5">
-                <h2 class="h3 mb-4 text-secondary">
-                  <i class="bi bi-grid-3x3-gap me-2"></i>Applications Web Intégrées
-                </h2>
-                <div class="row g-4 justify-content-center">
-                  <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 shadow-sm border-0">
-                      <div class="card-body text-center p-3">
-                        <i class="bi bi-box fs-2 text-primary mb-2"></i>
-                        <h6 class="card-title">ThreeJS</h6>
-                        <p class="card-text small text-muted">Visualisations 3D interactives</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 shadow-sm border-0">
-                      <div class="card-body text-center p-3">
-                        <i class="bi bi-bar-chart fs-2 text-success mb-2"></i>
-                        <h6 class="card-title">ChartJS</h6>
-                        <p class="card-text small text-muted">Graphiques et statistiques</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 shadow-sm border-0">
-                      <div class="card-body text-center p-3">
-                        <i class="bi bi-qr-code fs-2 text-warning mb-2"></i>
-                        <h6 class="card-title">QR Code</h6>
-                        <p class="card-text small text-muted">Générateur de QR codes</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 shadow-sm border-0">
-                      <div class="card-body text-center p-3">
-                        <i class="bi bi-file-earmark-spreadsheet fs-2 text-info mb-2"></i>
-                        <h6 class="card-title">SheetJS</h6>
-                        <p class="card-text small text-muted">Tableurs et données Excel</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Tech Stack -->
-              <div class="tech-stack mb-5">
-                <h2 class="h3 mb-4 text-secondary">
-                  <i class="bi bi-stack me-2"></i>Stack Technologique
-                </h2>
-                <div class="d-flex justify-content-center flex-wrap gap-3">
-                  <span class="badge bg-success fs-6 p-2">
-                    <i class="bi bi-lightning-charge me-1"></i>Vue.js 3
-                  </span>
-                  <span class="badge bg-primary fs-6 p-2">
-                    <i class="bi bi-server me-1"></i>PHP 8
-                  </span>
-                  <span class="badge bg-info fs-6 p-2">
-                    <i class="bi bi-database me-1"></i>SQLite
-                  </span>
-                  <span class="badge bg-warning text-white fs-6 p-2">
-                    <i class="bi bi-layout-wtf me-1"></i>Bootstrap 5
-                  </span>
-                  <span class="badge bg-danger fs-6 p-2">
-                    <i class="bi bi-shield-check me-1"></i>CSRF Protection
-                  </span>
-                </div>
-              </div>
-
-              <!-- CTA Section -->
-              <div v-if="!userLoggedIn" class="cta-section">
-                <div class="card border-0 bg-gradient">
-                  <div class="card-body p-4">
-                    <h3 class="card-title h4 mb-3">Prêt à commencer ?</h3>
-                    <p class="card-text text-muted mb-4">
-                      Rejoignez-nous et découvrez une application web moderne et sécurisée
+        <div class="card">
+          <div class="card-body">
+            <!-- Feature Selection -->
+            <h5 class="mb-3">Select a Process:</h5>
+            <div class="row mb-4">
+              <div class="col-md-6 mb-3">
+                <div 
+                  class="card feature-card" 
+                  :class="{ selected: selectedFeature === 'xl-reset' }"
+                  @click="selectFeature('xl-reset')"
+                >
+                  <div class="card-body">
+                    <h6 class="card-title"><b>Reset Workbook and Worksheets Passwords</b></h6>
+                    <p class="card-text small text-muted">
+                      Used to keep protection parameters if you need to change lost password
                     </p>
-                    <div class="d-flex justify-content-center gap-3">
-                      <a class="btn btn-success btn-lg" href="/signup">
-                        <i class="bi bi-rocket-takeoff me-2"></i>Commencer maintenant
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
-
-              <div v-else class="user-dashboard-link">
-                <div class="card border-0 bg-success bg-opacity-10">
-                  <div class="card-body p-4">
-                    <h3 class="card-title h4 mb-3">
-                      <i class="bi bi-person-check me-2"></i>Bienvenue de retour !
-                    </h3>
-                    <p class="card-text mb-4">
-                      Accédez à votre tableau de bord pour utiliser toutes les fonctionnalités
+              <div class="col-md-6 mb-3">
+                <div 
+                  class="card feature-card" 
+                  :class="{ selected: selectedFeature === 'xl-remove' }"
+                  @click="selectFeature('xl-remove')"
+                >
+                  <div class="card-body">
+                    <h6 class="card-title"><b>Remove Workbook and Worksheets Protections</b></h6>
+                    <p class="card-text small text-muted">
+                      If you only need to remove all protections
                     </p>
-                    <a class="btn btn-success btn-lg" href="/dashboard">
-                      <i class="bi bi-speedometer2 me-2"></i>Tableau de bord
-                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div 
+                  class="card feature-card" 
+                  :class="{ selected: selectedFeature === 'vba-remove' }"
+                  @click="selectFeature('vba-remove')"
+                >
+                  <div class="card-body">
+                    <h6 class="card-title"><b>Remove VBA Project Password</b></h6>
+                    <p class="card-text small text-muted">
+                      Refer to the ReadMe file to fix the VBA project after the process
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div 
+                  class="card feature-card" 
+                  :class="{ selected: selectedFeature === 'vba-decode' }"
+                  @click="selectFeature('vba-decode')"
+                >
+                  <div class="card-body">
+                    <h6 class="card-title"><b>Decode VBA Project Obfuscation</b></h6>
+                    <p class="card-text small text-muted">
+                      Hex encoding, StrReverse, Base64, VBA expressions
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div 
+                  class="card feature-card" 
+                  :class="{ selected: selectedFeature === 'vba-analysis' }"
+                  @click="selectFeature('vba-analysis')"
+                >
+                  <div class="card-body">
+                    <h6 class="card-title"><b>Cybersecurity Analysis</b></h6>
+                    <p class="card-text small text-muted">
+                      Find suspicious Malware in the VBA script like Dridex
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- File Upload -->
+            <div 
+              class="upload-zone mb-3" 
+              :class="{ dragover: isDragging }"
+              @dragover.prevent="isDragging = true"
+              @dragleave.prevent="isDragging = false"
+              @drop.prevent="handleDrop"
+              @click="$refs.fileInput.click()"
+            >
+              <input 
+                type="file" 
+                ref="fileInput" 
+                @change="handleFileSelect" 
+                accept=".xlsx,.xlsm"
+                style="display: none"
+              >
+              <i class="bi bi-cloud-upload display-4 text-muted"></i>
+              <p class="mt-2 mb-0">Click to select or drag and drop your Excel file</p>
+              <p class="small text-muted" v-if="selectedFile">Selected: [[ selectedFile.name ]]</p>
+            </div>
+
+            <!-- Process Button -->
+            <div class="text-center" v-if="selectedFeature && selectedFile">
+              <button 
+                class="btn btn-primary btn-lg" 
+                @click="processFile"
+                :disabled="isProcessing"
+              >
+                <span v-if="isProcessing">
+                  <span class="spinner-border spinner-border-sm me-2"></span>
+                  Processing...
+                </span>
+                <span v-else>Start Processing</span>
+              </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mt-3" v-if="isProcessing">
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <!-- Result -->
+            <div class="mt-4" v-if="result">
+              <div class="alert" :class="'alert-' + result.type" role="alert">
+                <h5 class="alert-heading">[[ result.title ]]</h5>
+                <p>[[ result.message ]]</p>
+                <hr>
+                <div v-if="result.downloadUrl">
+                  <a :href="result.downloadUrl" class="btn btn-success" download>
+                    <i class="bi bi-download me-2"></i>Download File
+                  </a>
+                </div>
+                <div v-if="result.note" class="small text-muted mt-2">
+                  <i class="bi bi-info-circle me-1"></i>[[ result.note ]]
+                </div>
+              </div>
+            </div>
+
+            <!-- Output for VBA Decode/Analysis -->
+            <div class="mt-4" v-if="outputData">
+              <h6>Output:</h6>
+              <div class="output-area">
+                <pre v-if="outputData.deobfuscation"><strong>Deobfuscation:</strong>\\n[[ outputData.deobfuscation ]]</pre>
+                <pre v-if="outputData.decode"><strong>Decode:</strong>\\n[[ outputData.decode ]]</pre>
+                <pre v-if="outputData.reveal"><strong>Reveal:</strong>\\n[[ outputData.reveal ]]</pre>
+                <pre v-if="outputData.analysis"><strong>Analysis:</strong>\\n[[ outputData.analysis ]]</pre>
+              </div>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="text-center mt-4" v-if="result || outputData">
+              <button class="btn btn-secondary" @click="resetForm">
+                Process Another File
+              </button>
+            </div>
           </div>
-        </section>
-        <FooterComp></FooterComp>
+        </div>
       </div>`,
     data: function () {
       return {
-        userLoggedIn: window.__USER_LOGGED__ || false
+        selectedFeature: null,
+        selectedFile: null,
+        isDragging: false,
+        isProcessing: false,
+        result: null,
+        outputData: null
       };
+    },
+    methods: {
+      selectFeature: function (feature) {
+        this.selectedFeature = feature;
+        this.result = null;
+        this.outputData = null;
+      },
+      handleFileSelect: function (event) {
+        var file = event.target.files[0];
+        if (file) {
+          this.selectedFile = file;
+        }
+      },
+      handleDrop: function (event) {
+        this.isDragging = false;
+        var file = event.dataTransfer.files[0];
+        if (file && (file.name.endsWith('.xlsx') || file.name.endsWith('.xlsm'))) {
+          this.selectedFile = file;
+        } else {
+          alert('Please select a valid Excel file (.xlsx or .xlsm)');
+        }
+      },
+      processFile: async function () {
+        var self = this;
+        if (!this.selectedFeature || !this.selectedFile) {
+          alert('Please select a feature and a file');
+          return;
+        }
+
+        this.isProcessing = true;
+        this.result = null;
+        this.outputData = null;
+
+        var formData = new FormData();
+        formData.append('file', this.selectedFile);
+
+        var endpoints = {
+          'xl-reset': '/api/xl-reset',
+          'xl-remove': '/api/xl-remove',
+          'vba-remove': '/api/vba-remove',
+          'vba-decode': '/api/vba-decode',
+          'vba-analysis': '/api/vba-analysis'
+        };
+
+        try {
+          var response = await fetch(endpoints[this.selectedFeature], {
+            method: 'POST',
+            body: formData
+          });
+
+          var data = await response.json();
+
+          if (response.ok && data.success) {
+            if (data.filename) {
+              this.result = {
+                type: 'success',
+                title: 'Success!',
+                message: data.message,
+                downloadUrl: '/download/' + data.filename,
+                note: data.note || null
+              };
+            } else if (data.data) {
+              this.outputData = data.data;
+              this.result = {
+                type: 'info',
+                title: 'Processing Complete',
+                message: data.message
+              };
+            }
+          } else {
+            this.result = {
+              type: 'danger',
+              title: 'Error',
+              message: data.error || 'Processing failed'
+            };
+          }
+        } catch (error) {
+          this.result = {
+            type: 'danger',
+            title: 'Error',
+            message: 'An error occurred: ' + error.message
+          };
+        } finally {
+          this.isProcessing = false;
+        }
+      },
+      resetForm: function () {
+        this.selectedFeature = null;
+        this.selectedFile = null;
+        this.result = null;
+        this.outputData = null;
+        if (this.$refs.fileInput) {
+          this.$refs.fileInput.value = '';
+        }
+      }
     }
   };
 })();
