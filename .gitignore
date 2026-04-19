@@ -16,6 +16,8 @@ upload/
 output/
 _temp/
 _temp.zip
+_*.xlsx
+_*.xlsm
 
 # IDE
 .vscode/

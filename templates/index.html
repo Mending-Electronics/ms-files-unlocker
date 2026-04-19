@@ -31,8 +31,8 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .feature-card.selected {
-            border-color: #0d6efd;
-            background-color: #f8f9fa;
+            border-color: var(--bs-primary);
+            background-color: var(--bs-body);
         }
         .upload-zone {
             border: 2px dashed #dee2e6;
@@ -42,18 +42,19 @@
             transition: all 0.3s ease;
         }
         .upload-zone:hover, .upload-zone.dragover {
-            border-color: #0d6efd;
-            background-color: #f8f9fa;
+            border-color: var(--bs-primary);
+            background-color: var(--bs-body);
         }
         .output-area {
             max-height: 400px;
             overflow-y: auto;
-            background-color: #f8f9fa;
+            background-color: var(--bs-body);
             padding: 15px;
             border-radius: 5px;
             font-family: monospace;
             font-size: 12px;
         }
+        
     </style>
 </head>
 <body>

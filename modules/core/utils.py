@@ -10,13 +10,12 @@ def setup_directories(base_dir):
     """Setup necessary directories for file processing."""
     dir_upload = os.path.join(base_dir, 'upload')
     dir_unlocked = os.path.join(base_dir, 'output')
-    dir_temp = os.path.join(base_dir, '_temp')
-    zip_temp = os.path.join(base_dir, '_temp.zip')
     
     os.makedirs(dir_upload, exist_ok=True)
     os.makedirs(dir_unlocked, exist_ok=True)
     
-    return dir_upload, dir_unlocked, dir_temp, zip_temp
+    # Return relative paths for temp working directory (in current directory)
+    return dir_upload, dir_unlocked, '_temp', '_temp.zip'
 
 
 def cleanup(dir_upload, dir_unlocked, dir_temp, zip_temp):
@@ -48,26 +47,40 @@ def reset_work(zip_temp, dir_temp):
 
 
 def extract_excel_file(file_path, temp_dir, zip_temp):
-    """Extract Excel file as ZIP to temporary directory."""
-    shutil.copyfile(file_path, zip_temp)
+    """Extract Excel file as ZIP to temporary directory (following old methodology)."""
+    # Create copy with "_" prefix in current directory
+    filename = os.path.basename(file_path)
+    temp_filename = "_" + filename
     
+    # Copy to current directory with "_" prefix
+    shutil.copyfile(file_path, temp_filename)
+    
+    # Rename to _temp.zip
+    os.rename(temp_filename, zip_temp)
+    
+    # Extract to _temp folder
     with zipfile.ZipFile(zip_temp, 'r') as zip_ref:
+        for file_name in zip_ref.namelist():
+            print(file_name)
         zip_ref.extractall(temp_dir)
 
 
 def repackage_excel_file(zip_temp, output_path, temp_dir):
-    """Repackage Excel file from ZIP and cleanup."""
+    """Repackage Excel file from ZIP and cleanup (following old methodology)."""
+    # Remove existing output file
     if os.path.exists(output_path):
         os.remove(output_path)
     
+    # Rename _temp.zip to output filename
     os.rename(zip_temp, output_path)
     
+    # Remove _temp folder
     if os.path.exists(temp_dir):
         shutil.rmtree(temp_dir)
 
 
 def remove_file_from_zip(zip_file_path, file_to_remove):
-    """Remove a file from ZIP archive."""
+    """Remove a file from ZIP archive (following old methodology)."""
     temp_zip_file = zip_file_path + '.temp'
     with zipfile.ZipFile(zip_file_path, 'r') as zip_read:
         with zipfile.ZipFile(temp_zip_file, 'w') as zip_write:
@@ -79,14 +92,14 @@ def remove_file_from_zip(zip_file_path, file_to_remove):
     os.rename(temp_zip_file, zip_file_path)
 
 
-def add_file_to_zip(zip_file_path, file_dir, file_to_add, temp_dir):
-    """Add a file to ZIP archive."""
+def add_file_to_zip(zip_file_path, file_dir, file_to_add):
+    """Add a file to ZIP archive (following old methodology)."""
     with zipfile.ZipFile(zip_file_path, 'a') as myzip:
-        myzip.write(os.path.join(temp_dir, file_to_add), os.path.join(file_dir, file_to_add))
+        myzip.write('_temp/' + file_dir + file_to_add, file_dir + file_to_add)
 
 
 def remove_worksheet_password(worksheet_path, zip_temp, temp_dir):
-    """Remove password protection from worksheet XML."""
+    """Remove password protection from worksheet XML (following old methodology)."""
     try:
         file_in = le.parse(worksheet_path)
         
@@ -113,8 +126,8 @@ def remove_worksheet_password(worksheet_path, zip_temp, temp_dir):
             i.write(etree.tostring(root))
         
         filename = os.path.basename(worksheet_path)
-        remove_file_from_zip(zip_temp, f'xl/worksheets/{filename}')
-        add_file_to_zip(zip_temp, 'xl/worksheets/', filename, temp_dir)
+        remove_file_from_zip(zip_temp, 'xl/worksheets/' + filename)
+        add_file_to_zip(zip_temp, 'xl/worksheets/', filename)
         
         return True
     except Exception as e:
@@ -123,7 +136,7 @@ def remove_worksheet_password(worksheet_path, zip_temp, temp_dir):
 
 
 def remove_worksheet_protection(worksheet_path, zip_temp, temp_dir):
-    """Remove all protection elements from worksheet XML."""
+    """Remove all protection elements from worksheet XML (following old methodology)."""
     try:
         tree = ET.parse(worksheet_path)
         root = tree.getroot()
@@ -134,8 +147,8 @@ def remove_worksheet_protection(worksheet_path, zip_temp, temp_dir):
         tree.write(worksheet_path)
         
         filename = os.path.basename(worksheet_path)
-        remove_file_from_zip(zip_temp, f'xl/worksheets/{filename}')
-        add_file_to_zip(zip_temp, 'xl/worksheets/', filename, temp_dir)
+        remove_file_from_zip(zip_temp, 'xl/worksheets/' + filename)
+        add_file_to_zip(zip_temp, 'xl/worksheets/', filename)
         
         return True
     except Exception as e:
@@ -144,7 +157,7 @@ def remove_worksheet_protection(worksheet_path, zip_temp, temp_dir):
 
 
 def remove_workbook_protection(workbook_path, zip_temp, temp_dir):
-    """Remove workbook protection from workbook XML."""
+    """Remove workbook protection from workbook XML (following old methodology)."""
     try:
         tree = ET.parse(workbook_path)
         root = tree.getroot()
@@ -155,8 +168,8 @@ def remove_workbook_protection(workbook_path, zip_temp, temp_dir):
         tree.write(workbook_path)
         
         filename = os.path.basename(workbook_path)
-        remove_file_from_zip(zip_temp, f'xl/{filename}')
-        add_file_to_zip(zip_temp, 'xl/', filename, temp_dir)
+        remove_file_from_zip(zip_temp, 'xl/' + filename)
+        add_file_to_zip(zip_temp, 'xl/', filename)
         
         return True
     except Exception as e:

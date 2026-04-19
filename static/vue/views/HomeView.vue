@@ -93,7 +93,8 @@
             <!-- File Upload -->
             <div 
               class="upload-zone mb-3" 
-              :class="{ dragover: isDragging }"
+              :class="{ dragover: isDragging, 'bg-success text-white': selectedFile }"
+              style="cursor: pointer;"
               @dragover.prevent="isDragging = true"
               @dragleave.prevent="isDragging = false"
               @drop.prevent="handleDrop"
@@ -106,9 +107,9 @@
                 accept=".xlsx,.xlsm"
                 style="display: none"
               >
-              <i class="bi bi-cloud-upload display-4 text-muted"></i>
-              <p class="mt-2 mb-0">Click to select or drag and drop your Excel file</p>
-              <p class="small text-muted" v-if="selectedFile">Selected: [[ selectedFile.name ]]</p>
+              <i class="bi bi-cloud-upload display-4"></i>
+              <p class="mt-2 mb-0 text-center">Click to select or drag and drop your Excel file</p>
+              <p class="" v-if="selectedFile">Selected: [[ selectedFile.name ]]</p>
             </div>
 
             <!-- Process Button -->
